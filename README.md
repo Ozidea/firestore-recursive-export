@@ -1,23 +1,27 @@
 # Firestore Recursive Export Tool
 
-A Python-based utility to export Google Cloud Firestore collections, including "virtual documents" and all nested sub-collections, into a structured JSON file.
+A robust Python utility designed to export Google Cloud Firestore collections into a structured JSON format. Unlike standard export methods, this tool performs a deep recursive traversal to capture nested sub-collections and "virtual documents."
 
-## Why this tool?
-Standard Firestore export tools or SDK methods like `.stream()` often skip "virtual documents"—documents that appear in the Firebase Console (italics) because they have sub-collections but no fields of their own. This script uses `list_documents()` and recursive traversal to ensure every piece of data, including deep-nested sub-collections (like `daily_entries`), is captured.
+## 🚀 Why This Tool?
+Standard Firestore SDK methods like `.stream()` often fail to retrieve **"Virtual Documents"**—documents that appear in the Firebase Console (usually in italics) because they contain sub-collections but have no fields of their own. 
 
-## Features
-- **Deep Export:** Recursively fetches all sub-collections.
-- **Virtual Document Support:** Captures documents that only exist as paths for sub-collections.
-- **JSON Output:** Saves everything into a single, readable JSON file.
-- **Error Handling:** Prevents "App already exists" errors in notebook environments.
+This utility uses `list_documents()` and a recursive algorithm to ensure that:
+1. Every document is captured, even if it has no direct fields.
+2. All nested sub-collections at any depth are included in the final output.
 
-## Prerequisites
-- Python 3.x
-- Firebase Admin SDK
-- A Service Account Key (`.json` file) from Firebase Console.
+## ✨ Features
+- **Deep Recursion:** Automatically detects and exports all levels of sub-collections.
+- **Virtual Document Support:** Captures documents that exist only as paths for nested data.
+- **Clean JSON Output:** Generates a single, well-structured JSON file ready for backup or migration.
+- **Environment Aware:** Safe for use in both local scripts and Jupyter/Google Colab notebooks.
 
-## Installation
-1. Clone the repository:
+## 🛠 Prerequisites
+- **Python 3.x**
+- **Firebase Admin SDK:** `pip install firebase-admin`
+- **Service Account Key:** A `.json` credentials file from the Firebase Console (Project Settings > Service Accounts).
+
+## 📦 Installation
+1. **Clone the repository:**
    ```bash
    git clone [https://github.com/YOUR_USERNAME/firestore-recursive-export.git](https://github.com/YOUR_USERNAME/firestore-recursive-export.git)
    cd firestore-recursive-export
